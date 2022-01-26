@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title th:text="${titulo}"></title>
+	</head>
+	<body>
+		<h1 th:text="${titulo}"></h1>
+        <ul>
+            <li>
+                <a th:href="@{/variables/string/} + 'Hola Juan'">/variables/string/Hola Juan</a>
+            </li>
+            <li>
+                <a th:href="@{/variables/string/} + 'Hola que tal jhon'">/variables/string/Hola que tal jhon</a>
+            </li>
+            <li>
+                <a th:href="@{/variables/string/} + ${titulo} + '/' + 7">/variables/string/Saludos Juan/7</a>
+            </li>
+        </ul>
+	</body>
+</html>
