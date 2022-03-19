@@ -12,7 +12,7 @@
 		<header th:fragment="header">
 			<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 				<div class="container-fluid">
-					<a class="navbar-brand" href="#">Spring Boot</a>
+					<a class="navbar-brand navbar__titulo" href="#">Spring Boot</a>
 					<button
 						class="navbar-toggler"
 						type="button"
@@ -26,8 +26,8 @@
 					</button>
 					<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 						<div class="navbar-nav">
-							<a class="nav-link active" aria-current="page" href="#">Home</a>
-							<a class="nav-link" th:href="@{/listar}">Clientes</a>
+							<a class="nav-link nav__titulo active" aria-current="page" href="#">Home</a>
+							<a class="nav-link nav__titulo" th:href="@{/listar}">Clientes</a>
 						</div>
 					</div>
 				</div>

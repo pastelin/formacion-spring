@@ -9,7 +9,9 @@
 			<div class="row mt-3">
 				<div class="col mb-3">
 					<div class="card bg-dark text-white">
-						<div class="card-header text-center h1" th:text="${titulo}"></div>
+						<div class="card-header text-center">
+							<h1 th:text="${titulo}"></h1>
+						</div>
 
 						<div class="card-body">
 							<div th:object="${cliente}" th:remove="tag">
@@ -97,12 +99,19 @@
 									</div>
 								</div>
 
+								<div class="col-12 col-md-6 mb-3">
+									<label for="foto" class="form-label">Foto</label>
+									<div class="col-12 col-md-6">
+										<input type="file" name="file" class="form-control">
+									</div>
+								</div>
+
 								<div class="row">
 									<div class="col-12 text-center">
 										<input
 											type="submit"
 											value="Crear Cliente"
-											class="btn btn-secondary"
+											class="cliente__crear"
 										/>
 									</div>
 								</div>

@@ -1,25 +1,148 @@
-tbody td .editar, 
-tbody td .eliminar {
+:root {
+	--btnEliminar: #ff4c4c;
+	--btnEliminarOscuro: #cf4242;
+	--btnEditar: #0099e5;
+	--btnEditarOscuro: #0272aa;
+	--blanco: #fff;
+	--negro: #000;
+	--btnVer: #34bf49;
+	--btnVerOscuro: #289939;
+	--darkBody: #212529;
+	--darkHeader: #202428;
+
+}
+
+html {
+	box-sizing: border-box;
+	font-size: 62.5%;
+}
+
+p {
+	font-size: 1.8rem;
+}
+
+h1 {
+	font-size: 4rem;;
+}
+
+.nav__titulo,
+.navbar__titulo {
+	font-size: 2rem;
+}
+
+input {
+	border: none;
+}
+
+tr {
+	text-align: center;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+/** Globales **/
+body {
+	font-family: sans-serif;
+	font-size: 1.6rem;
+	line-height: 2;
+}
+
+a {
 	text-decoration: none;
-	color: rgba(0, 0, 0, .7);
-	border-bottom: 2px solid #000;
+	font-size: 1.6rem;
+}
+
+img {
+	width: 100%;
+}
+
+.form-control {
+	font-size: 1.6rem;
+}
+
+/** BTN Cliente **/
+.cliente__editar, 
+.cliente__crear, 
+.cliente__eliminar,
+.cliente__ver {
+	display: inline-block;
+	color: var(--blanco);
+	padding: .3rem 2rem;
+	border-radius: .5rem;
+}
+
+.cliente__editar,
+.cliente__crear {
+	background-color: var(--btnEditar);
+}
+
+.cliente__eliminar {
+	background-color: var(--btnEliminar);
+}
+
+.cliente__editar:hover,
+.cliente__crear:hover {
+	color: var(--blanco);
+	background-color: var(--btnEditarOscuro);
+}
+
+.cliente__eliminar:hover {
+	color: var(--blanco);
+	background-color: var(--btnEliminarOscuro);
+}
+
+.cliente__ver {
+	background-color: var(--btnVer);
+}
+
+.cliente__ver:hover {
+	background-color: var(--btnVerOscuro);
+	color: var(--blanco);
+}
+
+/** Estilos para ver detalle **/
+.contenedor {
+	max-width: 120rem;
+	width: 95%;
+	margin: 2rem auto;
+
+}
+
+.detalle {
+	background-color: var(--darkBody);
+	column-gap: 2rem;
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+	padding: 2rem;
+}
+
+.titulo {
+	background-color: var(--darkHeader);
+	color: var(--blanco);
+	padding: 1rem;
+	text-align: center;
+}
+
+.detalle__informacion {
+	color: var(--blanco);
+	list-style: none;
 }
 
 footer {
-	margin-top: 50px;
+	margin-top: 5rem;
 }
 
-footer .imagen__footer {
-	width: 250px;
-}
-
-footer .imagen__footer img {
-	width: 100%;
+.imagen__footer {
+	width: 35rem;
 }
 
 .contenedor__footer {
 	display: flex;
 	justify-content: center;
-	gap: 50px;
+	gap: 5rem;
 	align-items: center;
 }
