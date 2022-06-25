@@ -24,3 +24,22 @@ INSERT INTO clientes (id, nombre, apellido, email, create_at, foto) VALUES(22, '
 INSERT INTO clientes (id, nombre, apellido, email, create_at, foto) VALUES(23, 'Juan', 'Pastelin', 'juanpastelin@gmail.com', '2017-08-28', '');
 INSERT INTO clientes (id, nombre, apellido, email, create_at, foto) VALUES(24, 'Pedro', 'Paz', 'PedroPaz@gmail.com', '2017-08-28', '');
 INSERT INTO clientes (id, nombre, apellido, email, create_at, foto) VALUES(125, 'Juan', 'Pastelin', 'juanpastelin@gmail.com', '2017-08-28', '');
+
+
+/* Populate tabla productos */
+INSERT INTO productos (nombre, precio, create_at) values('Panasonic Pantalla LCD', 259990, NOW());
+INSERT INTO productos (nombre, precio, create_at) values('Panasonic Pantalla LCD', 259990, NOW());
+INSERT INTO productos (nombre, precio, create_at) values('Panasonic Pantalla LCD', 259990, NOW());
+INSERT INTO productos (nombre, precio, create_at) values('Panasonic Pantalla LCD', 259990, NOW());
+INSERT INTO productos (nombre, precio, create_at) values('Panasonic Pantalla LCD', 259990, NOW());
+INSERT INTO productos (nombre, precio, create_at) values('Panasonic Pantalla LCD', 259990, NOW());
+INSERT INTO productos (nombre, precio, create_at) values('Panasonic Pantalla LCD', 259990, NOW());
+
+
+/* Creamos algunas facturas */
+
+INSERT INTO facturas (descripcion, observacion, cliente_id, create_at) VALUES ('Factura equipos de oficina', null, 1, now());
+INSERT INTO facturas_items(cantidad, factura_id, producto_id) VALUES(1,1,1);
+INSERT INTO facturas_items(cantidad, factura_id, producto_id) VALUES(2,1,4);
+INSERT INTO facturas_items(cantidad, factura_id, producto_id) VALUES(1,1,5);
+INSERT INTO facturas_items(cantidad, factura_id, producto_id) VALUES(1,1,6);

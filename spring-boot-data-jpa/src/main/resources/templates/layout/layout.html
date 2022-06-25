@@ -5,8 +5,15 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title th:text=" 'Spring Boot: MVC + Thymeleaf + Data JPA - ' + ${titulo}"></title>
+		<link rel="stylesheet" th:href="@{/css/jquery-ui.min.css}" />
 		<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
 		<link rel="stylesheet" th:href="@{/css/estilos.css}" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:wght@400;700&display=swap"
+			rel="stylesheet"
+		/>
 	</head>
 	<body>
 		<header th:fragment="header">
@@ -26,7 +33,9 @@
 					</button>
 					<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 						<div class="navbar-nav">
-							<a class="nav-link nav__titulo active" aria-current="page" href="#">Home</a>
+							<a class="nav-link nav__titulo active" aria-current="page" href="#"
+								>Home</a
+							>
 							<a class="nav-link nav__titulo" th:href="@{/listar}">Clientes</a>
 						</div>
 					</div>
@@ -55,8 +64,12 @@
 					</p>
 				</div>
 			</div>
+
+			<script th:src="@{/js/jquery-3.6.0.min.js}"></script>
+			<script th:src="@{/js/jquery-ui.min.js}"></script>
+			<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+			<!-- <script th:src="@{/js/autocomplete-productos.js}"></script> -->
 		</footer>
 
-		<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
 	</body>
 </html>

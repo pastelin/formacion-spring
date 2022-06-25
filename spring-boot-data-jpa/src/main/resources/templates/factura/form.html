@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="layout/layout :: head"></head>
+
+	<body>
+		<header th:replace="layout/layout :: header"></header>
+
+		<div class="container py-4">
+			<div class="card bg-dark">
+				<div class="card-header text-white text-center">
+					<h1 th:text="${titulo}"></h1>
+				</div>
+
+				<div class="card-body">
+					<div class="col-12 mb-3">
+						<a
+							class="boton boton--primario"
+							th:href="@{'/ver/' + ${factura.cliente.id}}"
+							th:text="'&laquo; volver'"
+						></a>
+					</div>
+
+					<form
+						th:action="@{/factura/form/}"
+						th:object="${factura}"
+						method="post"
+						class="formulario"
+					>
+						<div class="campo">
+							<label class="campo__label" for="nombre">Nombre</label>
+							<input
+								type="text"
+								th:value="${factura.cliente.nombre} + ' ' + ${factura.cliente.apellido}"
+								disabled="disabled"
+								class="campo__field"
+							/>
+						</div>
+
+						<div class="campo">
+							<label class="campo__label" for="descripcion">Descripci&oacute;n</label>
+							<input
+								type="text"
+								th:field="*{descripcion}"
+								class="campo__field"
+								id="descripcion"
+								th:errorclass="'form-control is-invalid'"
+							/>
+							<div
+								th:if="${#fields.hasErrors('descripcion')}"
+								th:errors="*{descripcion}"
+							></div>
+						</div>
+
+						<div class="campo">
+							<label class="campo__label" for="observacion">Observaci&oacute;n</label>
+							<textarea
+								th:field="*{observacion}"
+								id="observacion"
+								class="campo__field campo__field--textarea"
+							></textarea>
+						</div>
+
+						<div class="campo">
+							<label class="campo__label" for="buscarProducto">Buscar Producto</label>
+							<input
+								type="text"
+								name="buscar_producto"
+								id="buscarProducto"
+								class="campo__field"
+							/>
+						</div>
+
+						<table th:replace="factura/plantilla-items :: itemsFactura"></table>
+
+						<table class="table table-dark table-striped" id="cargarItemProductos">
+							<thead>
+								<tr>
+									<th>Nombre</th>
+									<th>Precio</th>
+									<th>Cantidad</th>
+									<th>Total</th>
+									<th>Eliminar</th>
+								</tr>
+							</thead>
+
+							<tbody></tbody>
+						</table>
+
+						<h5>Total: <span id="gran_total"></span></h5>
+
+						<div class="campo">
+							<input type="submit" th:value="${titulo}" class="boton boton--primario" />
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<footer th:replace="layout/layout :: footer"></footer>
+
+		<script th:replace="factura/js/autocomplete-productos :: javascript"></script>
+		
+	</body>
+</html>

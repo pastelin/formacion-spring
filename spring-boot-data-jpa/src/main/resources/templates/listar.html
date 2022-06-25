@@ -15,7 +15,9 @@
 
 						<div class="card-body">
 							<div class="col-12 text-center mb-3">
-								<a th:href="@{/form}" class="cliente__crear">Crear Cliente</a>
+								<a th:href="@{/form}" class="boton boton--primario"
+									>Crear Cliente</a
+								>
 							</div>
 
 							<table class="table table-dark table-striped cliente">
@@ -26,6 +28,7 @@
 										<th>apellido</th>
 										<th>email</th>
 										<th>fecha</th>
+										<th>crear factura</th>
 										<th>Editar</th>
 										<th>Eliminar</th>
 									</tr>
@@ -35,7 +38,7 @@
 									<tr th:each="cliente : ${clientes}">
 										<td>
 											<a
-												class="cliente__ver"
+												class="boton boton--primario"
 												th:href="@{/ver/} + ${cliente.id}"
 												th:text="${cliente.id}"
 											></a>
@@ -46,16 +49,23 @@
 										<td th:text="${cliente.createAt}"></td>
 										<td>
 											<a
+												th:href="@{'/factura/form/' + ${cliente.id}}"
+												th:text="'crear factura'"
+												class="boton boton--verde"
+											></a>
+										</td>
+										<td>
+											<a
 												th:href="@{/form/} + ${cliente.id}"
 												th:text="'editar'"
-												class="cliente__editar"
+												class="boton boton--primario"
 											></a>
 										</td>
 										<td>
 											<a
 												th:href="@{/eliminar/} + ${cliente.id}"
 												th:text="'eliminar'"
-												class="cliente__eliminar"
+												class="boton boton--secundario"
 												onclick="return confirm('¿Estás seguro de eliminar el registro?');"
 											></a>
 										</td>

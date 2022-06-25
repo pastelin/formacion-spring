@@ -11,6 +11,14 @@
 			</div>
 
 			<div class="detalle">
+				<div class="col-12 mb-3">
+					<a
+						th:href="@{'/factura/form/' + ${cliente.id}}"
+						th:text="'crear factura'"
+						class="boton boton--verde"
+					></a>
+				</div>
+
 				<div class="detalle__imagen">
 					<img
 						th:if="${#strings.length(cliente.foto) > 0}"
@@ -25,6 +33,51 @@
 					<li class="" th:text="${cliente.email}"></li>
 					<li class="" th:text="${cliente.createAt}"></li>
 				</ul>
+				<div
+					th:if="${#lists.isEmpty(cliente.facturas)}"
+					class="alert alert-info my-4"
+					th:text="'No hay facturas asignadas para el cliente ' + ${cliente.nombre} + ' ' + ${cliente.apellido} "
+				></div>
+
+				<table
+					th:if="${not #lists.isEmpty(cliente.facturas)}"
+					class="table table-dark table-striped my-4"
+				>
+					<thead>
+						<tr>
+							<th>Folio</th>
+							<th>Descripci&oacute;n</th>
+							<th>Fecha</th>
+							<th>Total</th>
+							<th>Ver</th>
+							<th>Eliminar</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr th:each="factura: ${cliente.facturas}">
+							<td th:text="${factura.id}"></td>
+							<td th:text="${factura.descripcion}"></td>
+							<td th:text="${factura.createAt}"></td>
+							<td th:text="${factura.total}"></td>
+							<td>
+								<a
+									th:href="@{'/factura/ver/' + ${factura.id}}"
+									th:text="'detalle'"
+									class="boton boton--primario"
+								></a>
+							</td>
+							<td>
+								<a
+									th:href="@{'/factura/eliminar/' + ${factura.id}}"
+									th:text="'eliminar'"
+									class="boton boton--secundario"
+									onclick="return confirm('¿Estas seguro que desea eliminar la factura?');"
+								></a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</section>
 
