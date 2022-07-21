@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html
+	lang="en"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
 	<head th:replace="layout/layout :: head"> </head>
 
 	<body>
@@ -15,28 +19,28 @@
 
 						<div class="card-body">
 							<div class="col-12 text-center mb-3">
-								<a th:href="@{/form}" class="boton boton--primario"
-									>Crear Cliente</a
-								>
+								<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/form}" class="boton boton--primario">
+									Crear Cliente
+								</a>
 							</div>
 
 							<table class="table table-dark table-striped cliente">
 								<thead>
 									<tr>
-										<th>id</th>
+										<th sec:authorize="hasRole('ROLE_USER')">id</th>
 										<th>nombre</th>
 										<th>apellido</th>
 										<th>email</th>
 										<th>fecha</th>
-										<th>crear factura</th>
-										<th>Editar</th>
-										<th>Eliminar</th>
+										<th sec:authorize="hasRole('ROLE_ADMIN')">crear factura</th>
+										<th sec:authorize="hasRole('ROLE_ADMIN')">Editar</th>
+										<th sec:authorize="hasRole('ROLE_ADMIN')">Eliminar</th>
 									</tr>
 								</thead>
 
 								<tbody>
 									<tr th:each="cliente : ${clientes}">
-										<td>
+										<td sec:authorize="hasRole('ROLE_USER')">
 											<a
 												class="boton boton--primario"
 												th:href="@{/ver/} + ${cliente.id}"
@@ -47,21 +51,21 @@
 										<td th:text="${cliente.apellido}"></td>
 										<td th:text="${cliente.email}"></td>
 										<td th:text="${cliente.createAt}"></td>
-										<td>
+										<td sec:authorize="hasRole('ROLE_ADMIN')">
 											<a
 												th:href="@{'/factura/form/' + ${cliente.id}}"
 												th:text="'crear factura'"
 												class="boton boton--verde"
 											></a>
 										</td>
-										<td>
+										<td sec:authorize="hasRole('ROLE_ADMIN')">
 											<a
 												th:href="@{/form/} + ${cliente.id}"
 												th:text="'editar'"
 												class="boton boton--primario"
 											></a>
 										</td>
-										<td>
+										<td sec:authorize="hasRole('ROLE_ADMIN')">
 											<a
 												th:href="@{/eliminar/} + ${cliente.id}"
 												th:text="'eliminar'"

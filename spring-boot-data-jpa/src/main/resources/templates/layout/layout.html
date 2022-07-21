@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html
+	lang="en"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
 	<head th:fragment="head">
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -38,6 +42,45 @@
 							>
 							<a class="nav-link nav__titulo" th:href="@{/listar}">Clientes</a>
 						</div>
+						<div class="navbar-nav navbar-right">
+							<a
+								sec:authorize="!isAuthenticated()"
+								class="btn btn-outline-primary"
+								th:href="@{/login}"
+							>
+								Sign In
+							</a>
+
+							<div sec:authorize="isAuthenticated()" class="dropdown">
+								<a
+									class="btn btn-outline-primary dropdown-toggle"
+									href="#"
+									role="button"
+									id="dropdownMenuLink"
+									data-bs-toggle="dropdown"
+									aria-expanded="false"
+								>
+									<span sec:authentication="name"></span>
+								</a>
+
+								<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+									<form id="logoutForm" th:action="@{/logout}" method="post">
+										<button
+											class="dropdown-item"
+											onclick="document.getElementById('logoutForm').submit();"
+											type="submit"
+										>
+											Sign Out
+										</button>
+										<input
+											type="hidden"
+											th:name="${_csrf.parameterName}"
+											th:value="${_csrf.token}"
+										/>
+									</form>
+								</ul>
+							</div>
+						</div>
 					</div>
 				</div>
 			</nav>
@@ -59,6 +102,11 @@
 						<img th:src="@{/images/spring.png}" alt="Spring logo" />
 					</div>
 
+					<p sec:authorize="isAuthenticated()">
+						Usuario logueado: <span sec:authentication="name"></span> | Roles:
+						<span sec:authentication="principal.authorities"></span>
+					</p>
+
 					<p>
 						Powered by <a href="https://spring.io/projects/spring-data">Spring Data</a>
 					</p>
@@ -70,6 +118,5 @@
 			<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
 			<!-- <script th:src="@{/js/autocomplete-productos.js}"></script> -->
 		</footer>
-
 	</body>
 </html>
